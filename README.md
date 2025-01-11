@@ -10,3 +10,5 @@ This is the description found on the personal web page from Alex King: https://a
 Tasks Jr. is a basic but powerful web-based task manager/to-do list. I started building it years ago so I’d have a way to keep track of my own tasks and access them from a Windows box at work, a Mac at home, and a Treo on the go.
 
 This has been tested successfully on Uniform Server Zero XV using PHP 8.3 and MySQL Ver 8.2.0
+
+![Tasks_jr Screenshot](https://raw.githubusercontent.com/D0ct0rDave/tasks_jr/refs/heads/main/repoimages/tasks_jr_screenshot.jpg)
