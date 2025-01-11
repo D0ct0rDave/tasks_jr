@@ -18,5 +18,5 @@ This has been tested successfully on Uniform Server Zero XV using PHP 8.3 and My
 
 
 
-# TROUBLESHOTING / NOTES
+### TROUBLESHOTING / NOTES
 - You'll need to setup short_open_tag to "On" on your PHP.ini or PHP_Production.ini to make this work
