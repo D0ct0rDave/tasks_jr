@@ -5,7 +5,7 @@ $custom->init();       // sets date ranges
 
 /* ##### Edit these settings as needed ##### */
 
-$custom->language =                 "spanish";
+$custom->language =                 "english";
 // language you want to see tasks in - the following languages are included:
 //
 //   brazilian
