@@ -240,14 +240,25 @@ class custom {
 	function init() {
 		global $database;
 		$this->year_max = date("Y") + 10;
-		$this->year_min = mysql_query("SELECT MIN(date_due) FROM $database->table_name WHERE date_due > '".$this->minimum_date."'");
-		$this->year_min = substr(@mysql_result($this->year_min, 0), 0, 4);
-		if ($this->year_min == 0000 || $this->year_min == "") {
-			$this->year_min = date("Y");
+		
+		global $is_on_install_page;
+		if ($is_on_install_page != "yes")
+		{
+			$this->year_min = mysql_query("SELECT MIN(date_due) FROM $database->table_name WHERE date_due > '".$this->minimum_date."'");			
+			$this->year_min = substr(@mysql_result($this->year_min, 0), 0, 4);
+			if ($this->year_min == 0000 || $this->year_min == "") {
+				$this->year_min = date("Y");
+			}
+			
+			$this->year_max_existing = mysql_query("SELECT MAX(date_due) FROM $database->table_name");
+			$this->year_max_existing = substr(@mysql_result($this->year_max_existing, 0), 0, 4);
+			if ($this->year_max_existing == 0000 || $this->year_max_existing == "") {
+				$this->year_max_existing = date("Y");
+			}
 		}
-		$this->year_max_existing = mysql_query("SELECT MAX(date_due) FROM $database->table_name");
-		$this->year_max_existing = substr(@mysql_result($this->year_max_existing, 0), 0, 4);
-		if ($this->year_max_existing == 0000 || $this->year_max_existing == "") {
+		else
+		{
+			$this->year_min  = date("Y");
 			$this->year_max_existing = date("Y");
 		}
 	}
