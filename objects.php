@@ -60,7 +60,7 @@ class task {
 			}
 		}
 		$this->date_entered = date('YmdHis');
-		$query = "INSERT into $database->table_name ( parent, title, notes, status, priority, URL_1, URL_2, URL_3, date_due, date_entered, date_modified, container ) values ( '$this->parent', '$this->title', '$this->notes', '$this->status', '$this->priority', '$this->URL_1', '$this->URL_2', '$this->URL_3', '$this->date_due', '$this->date_entered', '$this->date_entered', '$this->container')";
+		$query = "INSERT into $database->table_name ( parent, title, notes, status, priority, URL_1, URL_2, URL_3, date_due, date_entered, date_modified, container, user_text_1, user_text_2, user_int_1, user_int_2, user_date_1, user_date_2) values ( '$this->parent', '$this->title', '$this->notes', '$this->status', '$this->priority', '$this->URL_1', '$this->URL_2', '$this->URL_3', '$this->date_due', '$this->date_entered', '$this->date_entered', '$this->container', '$this->user_text_1', '$this->user_text_2', '$this->user_int_1', '$this->user_int_2', '$this->user_date_1', '$this->user_date_2')";
 		mysql_query($query)
 			or die("MySQL error: ".mysql_error());
 	}

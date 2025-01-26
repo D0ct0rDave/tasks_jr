@@ -62,6 +62,24 @@ if (isset($_REQUEST["action"])) {
 			if (isset($_REQUEST["task_URL_3"])) {
 				$task->URL_3 = $_REQUEST["task_URL_3"];
 			}
+			if (empty($_REQUEST["task_user_text_1"]) || isset($_REQUEST["task_user_text_1"])) {
+				$task->user_text_1 = " ";
+			}
+			if (empty($_REQUEST["task_user_text_2"]) || isset($_REQUEST["task_user_text_2"])) {
+				$task->user_text_2 = " ";
+			}
+			if (empty($_REQUEST["task_user_int_1"]) || isset($_REQUEST["task_user_int_1"])) {
+				$task->user_int_1 = 0;
+			}
+			if (empty($_REQUEST["task_user_int_2"]) || isset($_REQUEST["task_user_int_2"])) {
+				$task->user_int_2 = 0;
+			}
+			if (empty($_REQUEST["task_user_date_1"]) || isset($_REQUEST["task_user_date_1"])) {
+				$task->user_date_1 = $custom->minimum_date;
+			}
+			if (empty($_REQUEST["task_user_date_2"]) || isset($_REQUEST["task_user_date_2"])) {
+				$task->user_date_2 = $custom->minimum_date;
+			}
 // construct due date
 			if (!empty($_REQUEST["task_year"])) {
 				$task->date_due = $_REQUEST["task_year"];
@@ -73,17 +91,17 @@ if (isset($_REQUEST["action"])) {
 				$task->date_due = $task->date_due."-".$_REQUEST["task_month"];
 			}
 			else {
-				$task->date_due = $task->date_due."-00";
+				$task->date_due = $task->date_due."-01";
 			}
 			if (!empty($_REQUEST["task_day"])) {
 				$task->date_due = $task->date_due."-".$_REQUEST["task_day"];
 			}
 			else {
-				$task->date_due = $task->date_due."-00";
+				$task->date_due = $task->date_due."-01";
 			}
 // due date is now set
 // valid date, set the $task->date_due value
-			if ($task->date_due != $custom->minimum_date && !checkdate(substr($task->date_due,5,2),substr($task->date_due,8,2),substr($task->date_due,0,4))) {
+			if (($task->date_due != $custom->minimum_date) && !checkdate(substr($task->date_due,5,2),substr($task->date_due,8,2),substr($task->date_due,0,4))) {
 				$page->msgs[] = $language->messages["err_invalid_date"];
 				$screen = "edit";
 				$reload_task = 0;
